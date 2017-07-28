@@ -11,6 +11,27 @@ export default Ember.Route.extend({
       // use the name of the repo as our id attribute to work with ember's conventions
       rawOrg.id    = rawOrg.login
       return rawOrg
-    });
+    })
+    // Use a promise to delay loading so you can see the loading state
+    // .then(function(data) {
+    //   return new Ember.RSVP.Promise((resolve, reject) => {
+    //     Ember.run.later(() => {
+    //       resolve(data)
+    //     }, 2000)
+    //   })
+    // });
+  },
+
+  actions: {
+    error(jqxhr) {
+      if ( jqxhr.status === 404 ) {
+        // intermediateTransitionTo takes you to a state that is not mapped to a URL
+        this.intermediateTransitionTo('org.notfound') 
+      } else {
+        return true // bubble up 
+                    //  it will go up through the routes until it finds one with
+                    //  an error template, all the way up to the application level
+      }
+    }
   }
 });

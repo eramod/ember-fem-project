@@ -1,5 +1,7 @@
 {{outlet}}
 
 <h5>Issues</h5>
-<li>#123 - Issue description goes here</li>
-<li>#456 - Issue description goes here</li>
+
+{{#each model as |issue|}}
+  <li>{{issue.title}}</li>
+{{/each}}

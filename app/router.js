@@ -7,10 +7,16 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  // List of Orgs
   this.route('orgs'); // orgs
+
+  // Individual Org
   this.route('org', {path: 'org/:id'}, function() {
-    // org/emberjs
-    this.route('repos');
+    // List of Repos
+    this.route('repos'); // org/emberjs
+
+    // Individual Repo
+    // org/jquery/jquery-ui
     this.route('repo', {path: ':repoid'}, function() {
       this.route('issues');
       this.route('contributors');

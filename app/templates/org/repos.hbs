@@ -1,6 +1,8 @@
 <ul>
-  {{#each model as |repo|}}
-    <li>{{link-to repo.name 'org.repo.issues' repo.name}}</li>  
+  {{#each model as |repository|}}
+    {{!-- the left side is inside the component 
+          and the right side is the outside world --}}
+    {{github-repo repo = repository}} 
   {{/each}}
 </ul>
 

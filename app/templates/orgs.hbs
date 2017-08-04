@@ -1,12 +1,13 @@
 <h1>My Favorite Orgs</h1>
-  <ul>
-    {{#each model as |org|}}
-      <li>
-        <span {{action 'addToFavorites' org}}>
-          [ Favorite ]
-        </span>
-        {{link-to org.id 'org' org.id}}
-      </li>
-    {{/each}}
-  </ul>
+<ul>
+  {{#each model as |organization|}}
+    {{!-- the left side is inside the component 
+          and the right side is the outside world --}}
+    {{github-org org = organization
+                 on-fav-clicked = 'addToFavorites'}}
+  {{/each}}
+</ul>
+
+
+
 {{outlet}}
